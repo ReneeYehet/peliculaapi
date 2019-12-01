@@ -20,7 +20,7 @@ class Almacen extends REST_Controller
 
 	public function pelicula_get()
 	{
-		$query = $this->db->query('SELECT B.pelicula_deseada AS titulo, A.idioma,A.fecha,A.duracion,A.sinopsis,A.clasificacion,A.director,A.categoria,A.portada,A.valoracion,A.pelicula FROM Pelicula AS A INNER JOIN Compra AS B ON A.titulo = B.id_compra');
+		$query = $this->db->query('SELECT B.id_compra AS id_pelicula, B.pelicula_deseada AS titulo, A.idioma,A.fecha,A.duracion,A.sinopsis,A.clasificacion,A.director,A.categoria,A.portada,A.valoracion,A.pelicula FROM Pelicula AS A INNER JOIN Compra AS B ON A.titulo = B.id_compra');
 
 		/*$data['Mensaje'] = 'Consulta Correcta';
 		$data['Total de Registros'] = $query->num_rows();
