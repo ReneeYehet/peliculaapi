@@ -22,7 +22,7 @@ class Solicitud extends REST_Controller
 
 
 
-			$query = $this->db->query('SELECT A.pelicula_deseada, B.estado From Compra AS A INNER JOIN Estado AS B ON A.id_estado = B.id_estado');
+			$query = $this->db->query('SELECT A.pelicula_deseada, A.costo, B.estado From Compra AS A INNER JOIN Estado AS B ON A.id_estado = B.id_estado');
 
 
 			$respuesta = array(
