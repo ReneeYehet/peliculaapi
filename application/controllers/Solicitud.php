@@ -6,6 +6,7 @@ header("Allow: GET");
 defined('BASEPATH') OR exit('No direct script access allowed');
 require (APPPATH.'libraries/REST_Controller.php');
 
+
 class Solicitud extends REST_Controller 
 {
 
@@ -36,7 +37,22 @@ class Solicitud extends REST_Controller
 
 			echo json_encode($respuesta);
 
+	}
+
+
+	/*public function estado_compra_get(){
+
+
+
+		$body = file_get_contents("https://peliculaapi.gearhostpreview.com/index.php/Alamcen/pelicula");
+
+
+		$body = json_decode($body)
+
+		for($i=0; i<count($body); $i++){
+			echo $body[$i]->campo;
 		}
+	}*/
 
 
 
