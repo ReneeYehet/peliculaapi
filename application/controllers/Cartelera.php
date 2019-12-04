@@ -39,7 +39,7 @@ class Cartelera extends REST_Controller {
 			'Mensaje' => 'Consulta Correcta',
 			'Total de Registros' => $query->num_rows(),
 			'Agenda' => $query->result_array(),
-			'Horarios' => $hora->result_array()
+			'Horarios' => $hora
 
 
 		);
