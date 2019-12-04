@@ -23,9 +23,9 @@ class Cartelera extends REST_Controller {
 		/*$query = $this->db->get('Programacion');
 		echo json_encode($query->result());*/
 
-		$lista_horarios = $this->db->query('SELECT A.id_pelicula, B.hora_inicio  FROM Programacion AS P INNER JOIN Pelicula AS A ON P.id_pelicula = A.id_pelicula INNER JOIN Horario AS B ON P.id_horario = B.id_horario');
+		$lista_horarios = $this->db->query('SELECT B.hora_inicio  FROM Programacion AS P INNER JOIN Pelicula AS A ON P.id_pelicula = A.id_pelicula INNER JOIN Horario AS B ON P.id_horario = B.id_horario');
 		$horarios = array(
-			'Horarios' => $lista_horarios[1]
+			'Horarios' => $lista_horarios->result_array()
 		);
 
 		foreach ($horarios as $value) {
