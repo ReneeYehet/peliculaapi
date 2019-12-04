@@ -29,7 +29,7 @@ class Cartelera extends REST_Controller {
 		);
 
 		foreach ($horarios as $value) {
-			$hora = array($value , );
+			$hora = ($value , );
 		}
 		echo json_encode($hora);
 
