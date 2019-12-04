@@ -23,16 +23,6 @@ class Cartelera extends REST_Controller {
 		/*$query = $this->db->get('Programacion');
 		echo json_encode($query->result());*/
 
-		$lista_horarios = $this->db->query('SELECT B.hora_inicio  FROM Programacion AS P INNER JOIN Pelicula AS A ON P.id_pelicula = A.id_pelicula INNER JOIN Horario AS B ON P.id_horario = B.id_horario');
-		$horarios = array(
-			$lista_horarios->result_array()
-		);
-
-		foreach ($horarios as $value) {
-			$hora += $value;
-			echo "<script>console.log('Debug Objects: " . $hora . "' );</script>";
-		}
-
 		$query = $this->db->query('SELECT D.pelicula_deseada AS titulo, A.duracion, A.sinopsis, A.categoria, B.num_sala, C.hora_inicio FROM Programacion AS P INNER JOIN Pelicula AS A ON P.id_pelicula = A.id_pelicula INNER JOIN Sala AS B ON P.id_sala = B.id_sala INNER JOIN Horario AS C ON P.id_horario = C.id_horario INNER JOIN Compra AS D ON A.titulo = D.id_compra');
 
 		$respuesta = array(
@@ -43,6 +33,12 @@ class Cartelera extends REST_Controller {
 
 
 		);
+		$horario = "";
+		foreach ($respuesta['Agenda'] as $key => $value) {
+			$horario .= $value['hora_inicio'] . ",";
+		}
+		$horario = substr($horario, 0, -1);
+		echo $horario;
 
 	}
 
