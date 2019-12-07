@@ -20,26 +20,18 @@ class Cartelera extends REST_Controller {
 	public function agenda_get(){
 
 
-		/*$query = $this->db->get('Programacion');
-		echo json_encode($query->result());*/
+		$query = $this->db->query('SELECT D.pelicula_deseada AS titulo, A.duracion, A.sinopsis, A.categoria, P.Horarios, B.num_sala FROM Programacion AS P INNER JOIN Pelicula AS A ON P.id_pelicula = A.id_pelicula INNER JOIN Sala AS B ON P.id_sala = B.id_sala INNER JOIN Compra AS D ON A.titulo = D.id_compra');
 
-		$query = $this->db->query('SELECT D.pelicula_deseada AS titulo, A.duracion, A.sinopsis, A.categoria, B.num_sala, C.hora_inicio FROM Programacion AS P INNER JOIN Pelicula AS A ON P.id_pelicula = A.id_pelicula INNER JOIN Sala AS B ON P.id_sala = B.id_sala INNER JOIN Horario AS C ON P.id_horario = C.id_horario INNER JOIN Compra AS D ON A.titulo = D.id_compra');
 
-		$respuesta = array(
-
+		$resultado = array(
 			'Mensaje' => 'Consulta Correcta',
-			'Total de Registros' => $query->num_rows(),
-			'Agenda' => $query->result_array(),
-
+			'total_registros' => $query->num_rows(),
+			'Agenda' => $query->result_array()
 
 		);
-		$horario = "";
-		foreach ($respuesta['Agenda'] as $key => $value) {
-			$horario .= $value['hora_inicio'] . ",";
-		}
-		$horario = substr($horario, 0, -1);
-		echo $horario;
-
+		
+		
+		echo json_encode($resultado);
 	}
 
 }
