@@ -20,7 +20,7 @@ class Cartelera extends REST_Controller {
 	public function agenda_get(){
 
 
-		$query = $this->db->query('SELECT B.id_pelicula,C.pelicula_deseada AS titulo, B.idioma,B.fecha,B.duracion,B.sinopsis,B.clasificacion,B.director,B.categoria,B.portada,B.valoracion,B.pelicula FROM Pelicula AS B INNER JOIN Compra AS C ON B.titulo = C.id_compra');
+		$query = $this->db->query('SELECT D.pelicula_deseada AS titulo, A.duracion, A.sinopsis, A.categoria, P.Horarios, B.num_sala FROM Programacion AS P INNER JOIN Pelicula AS A ON P.id_pelicula = A.id_pelicula INNER JOIN Sala AS B ON P.id_sala = B.id_sala INNER JOIN Compra AS D ON A.titulo = D.id_compra');
 
 
 		$resultado = array(

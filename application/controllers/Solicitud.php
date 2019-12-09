@@ -1,7 +1,7 @@
 <?php
 header('Access-Control-Allow-Origin: *');
 header("Access-Control-Allow-Headers: api-version");
-header("Access-Control-Allow-Methods: GET");
+header("Access-Control-Allow-Methods: GET, POST");
 header("Allow: GET");
 defined('BASEPATH') OR exit('No direct script access allowed');
 require (APPPATH.'libraries/REST_Controller.php');
@@ -37,6 +37,11 @@ class Solicitud extends REST_Controller
 
 			echo json_encode($respuesta);
 
+	}
+
+	public function aprobacion_post(){
+
+		$query = $this->db->query('SELECT A.pelicula_deseada, A.costo, B.estado From Compra AS A INNER JOIN Estado AS B ON A.id_estado = B.id_estado');
 	}
 
 
