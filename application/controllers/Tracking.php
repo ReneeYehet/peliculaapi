@@ -21,6 +21,7 @@ class Tracking extends CI_Controller {
         /*curl_setopt($curl, CURLOPT_URL, 'https://api.dhl.com/dgff/transportation/shipment-tracking');*/
         /*curl_setopt($curl, CURLOPT_POST, true);*/
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+		curl_setopt($curl, CURLOPT_CAINFO, dirname(__FILE__)."/cacert.pem");
         curl_setopt($curl, CURLOPT_HTTPHEADER, [
             'accept: application/json',
             'DHL-API-Key: oWzKTO2B7znEMmtaY9vr7t3pvv5E7SO9'
